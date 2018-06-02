@@ -104,115 +104,6 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
-            <collectionProp name="AuthManager.auth_list">
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/transactions/today</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/users/usage?month=06&amp;year=2018</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/transactions/summary?month=06&amp;year=2018</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/transactions/monthly</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/categories/summary?month=06&amp;year=2018</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/users/account?month=06&amp;year=2018</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/app/partials/reports.html?1.0.4</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/reports/transactions</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/categories</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/app/partials/budgets.html?1.0.4</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/budgets</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/app/partials/recurrings.html?1.0.4</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-              <elementProp name="" elementType="Authorization">
-                <stringProp name="Authorization.url">http://54.144.247.246:8080/api/recurrings</stringProp>
-                <stringProp name="Authorization.username">${AUTH_LOGIN}</stringProp>
-                <stringProp name="Authorization.password">${AUTH_PASSWORD}</stringProp>
-                <stringProp name="Authorization.domain"></stringProp>
-                <stringProp name="Authorization.realm"></stringProp>
-                <stringProp name="Authorization.mechanism">KERBEROS</stringProp>
-              </elementProp>
-            </collectionProp>
-          </AuthManager>
-          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="105 /api/transactions/today" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -253,6 +144,10 @@
                 <elementProp name="Accept" elementType="Header">
                   <stringProp name="Header.name">Accept</stringProp>
                   <stringProp name="Header.value">application/json, text/plain, */*</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Authorization</stringProp>
+                  <stringProp name="Header.value">Bearer 427ade43-cc2d-4a3a-9295-20a8c6e4b15e</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
