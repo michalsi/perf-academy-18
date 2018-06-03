@@ -50,7 +50,7 @@
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Authorization</stringProp>
-              <stringProp name="Header.value">Bearer 427ade43-cc2d-4a3a-9295-20a8c6e4b15e</stringProp>
+              <stringProp name="Header.value">Bearer ${auth_token}</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -172,6 +172,13 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract authorization token" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">auth_token</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.token</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">NO_AUTHORISATION_TOKEN</stringProp>
+            </JSONPostProcessor>
             <hashTree/>
           </hashTree>
         </hashTree>
