@@ -12,27 +12,6 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ProxyControl guiclass="ProxyControlGui" testclass="ProxyControl" testname="HTTP(S) Test Script Recorder" enabled="true">
-        <stringProp name="ProxyControlGui.port">8888</stringProp>
-        <collectionProp name="ProxyControlGui.exclude_list"/>
-        <collectionProp name="ProxyControlGui.include_list"/>
-        <boolProp name="ProxyControlGui.capture_http_headers">true</boolProp>
-        <intProp name="ProxyControlGui.grouping_mode">0</intProp>
-        <boolProp name="ProxyControlGui.add_assertion">false</boolProp>
-        <stringProp name="ProxyControlGui.sampler_type_name"></stringProp>
-        <boolProp name="ProxyControlGui.sampler_redirect_automatically">false</boolProp>
-        <boolProp name="ProxyControlGui.sampler_follow_redirects">true</boolProp>
-        <boolProp name="ProxyControlGui.use_keepalive">true</boolProp>
-        <boolProp name="ProxyControlGui.sampler_download_images">false</boolProp>
-        <intProp name="ProxyControlGui.proxy_http_sampler_naming_mode">0</intProp>
-        <stringProp name="ProxyControlGui.proxy_prefix_http_sampler_name"></stringProp>
-        <stringProp name="ProxyControlGui.proxy_pause_http_sampler"></stringProp>
-        <boolProp name="ProxyControlGui.notify_child_sl_filtered">false</boolProp>
-        <boolProp name="ProxyControlGui.regex_match">false</boolProp>
-        <stringProp name="ProxyControlGui.content_type_include"></stringProp>
-        <stringProp name="ProxyControlGui.content_type_exclude"></stringProp>
-      </ProxyControl>
-      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -66,6 +45,21 @@
           <boolProp name="stopThread">false</boolProp>
           <stringProp name="variableNames">user,password</stringProp>
         </CSVDataSet>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Script Variables" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="todayYear" elementType="Argument">
+              <stringProp name="Argument.name">todayYear</stringProp>
+              <stringProp name="Argument.value">${__time(YYYY,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="todayMonth" elementType="Argument">
+              <stringProp name="Argument.name">todayMonth</stringProp>
+              <stringProp name="Argument.value">${__time(MM,)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
         <hashTree/>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Sign in" enabled="true"/>
         <hashTree>
@@ -202,14 +196,14 @@
                 <elementProp name="month" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">month</stringProp>
-                  <stringProp name="Argument.value">${__time(MM,)}</stringProp>
+                  <stringProp name="Argument.value">${todayMonth}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
                 <elementProp name="year" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.name">year</stringProp>
-                  <stringProp name="Argument.value">${__time(YYYY,)}</stringProp>
+                  <stringProp name="Argument.value">${todayYear}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 </elementProp>
@@ -261,17 +255,17 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="month" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">month</stringProp>
-                  <stringProp name="Argument.value">06</stringProp>
+                  <stringProp name="Argument.value">${todayMonth}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">month</stringProp>
                 </elementProp>
                 <elementProp name="year" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">year</stringProp>
-                  <stringProp name="Argument.value">2018</stringProp>
+                  <stringProp name="Argument.value">${todayYear}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">year</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -321,17 +315,17 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="month" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">month</stringProp>
-                  <stringProp name="Argument.value">06</stringProp>
+                  <stringProp name="Argument.value">${todayMonth}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">month</stringProp>
                 </elementProp>
                 <elementProp name="year" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">year</stringProp>
-                  <stringProp name="Argument.value">2018</stringProp>
+                  <stringProp name="Argument.value">${todayYear}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">year</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -486,17 +480,17 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="month" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">month</stringProp>
-                  <stringProp name="Argument.value">06</stringProp>
+                  <stringProp name="Argument.value">${todayMonth}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">month</stringProp>
                 </elementProp>
                 <elementProp name="year" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">year</stringProp>
-                  <stringProp name="Argument.value">2018</stringProp>
+                  <stringProp name="Argument.value">${todayYear}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">year</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
@@ -546,17 +540,17 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="month" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">month</stringProp>
-                  <stringProp name="Argument.value">06</stringProp>
+                  <stringProp name="Argument.value">${todayMonth}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">month</stringProp>
                 </elementProp>
                 <elementProp name="year" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.name">year</stringProp>
-                  <stringProp name="Argument.value">2018</stringProp>
+                  <stringProp name="Argument.value">${todayYear}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">year</stringProp>
                 </elementProp>
               </collectionProp>
             </elementProp>
