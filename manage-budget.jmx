@@ -656,6 +656,13 @@
                 <stringProp name="JSONPostProcessor.defaultValues">NO_INCOME_BUDGET_EXTRACTED</stringProp>
               </JSONPostProcessor>
               <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Expenditure Budget" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">expenditureBudget</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.groups[?(@.type==&quot;EXPENDITURE&quot;)].budgets[*]</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">NO_EXPENDITURE_BUDGET_EXTRACTED</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
             </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="108 /api/transactions/today" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -726,6 +733,51 @@
                 <boolProp name="displaySystemProperties">false</boolProp>
               </DebugSampler>
               <hashTree/>
+              <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Prepare update income data" enabled="true">
+                <intProp name="ActionProcessor.action">1</intProp>
+                <intProp name="ActionProcessor.target">0</intProp>
+                <stringProp name="ActionProcessor.duration">0</stringProp>
+              </TestAction>
+              <hashTree>
+                <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Update Income" enabled="true">
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
+//Prepare random id
+var incomeBudget_matchNr = vars.get(&quot;incomeBudget_matchNr&quot;);
+var incomeBudgetId = getRndInteger(1,incomeBudget_matchNr).toString();
+
+var incomeBudget = vars.get(&quot;incomeBudget_&quot; + incomeBudgetId);
+
+var multiplier = 10000;
+
+var projected = Math.random() * multiplier ;
+var actual = Math.random() * multiplier;
+var remaining = projected - actual;
+
+//variable is saved in String - we need to convert it to JSON object
+incomeObj = JSON.parse(incomeBudget);
+
+//modify existing keys and limit to 2 decimal places
+incomeObj.projected = parseFloat(projected).toFixed(2);
+incomeObj.actual = parseFloat(actual).toFixed(2);
+incomeObj.remaining = parseFloat(remaining).toFixed(2);
+
+
+//now we need to convert object back to String to save it in variable
+vars.put(&quot;updatedIncomeBudget&quot;, JSON.stringify(incomeObj) );
+
+//additionally extract budget ID into separate variable
+vars.put( &quot;incomeBudgetId&quot;,JSON.stringify(incomeObj.id) );
+
+vars.put(&quot;incomeBudget_id&quot;,incomeBudgetId);</stringProp>
+                  <stringProp name="scriptLanguage">javascript</stringProp>
+                </JSR223PreProcessor>
+                <hashTree/>
+              </hashTree>
               <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Update multiple income budgets" enabled="true">
                 <boolProp name="LoopController.continue_forever">true</boolProp>
                 <stringProp name="LoopController.loops">${__Random(1,${incomeBudget_matchNr},)}</stringProp>
@@ -772,47 +824,13 @@
                     </collectionProp>
                   </HeaderManager>
                   <hashTree/>
-                  <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Update Income" enabled="true">
-                    <stringProp name="cacheKey">true</stringProp>
-                    <stringProp name="filename"></stringProp>
-                    <stringProp name="parameters"></stringProp>
-                    <stringProp name="script">function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-}
-//Prepare random id
-var incomeBudget_matchNr = vars.get(&quot;incomeBudget_matchNr&quot;);
-var incomeBudgetId = getRndInteger(1,incomeBudget_matchNr).toString();
-
-var incomeBudget = vars.get(&quot;incomeBudget_&quot; + incomeBudgetId);
-
-var multiplier = 10000;
-
-var projected = Math.random() * multiplier ;
-var actual = Math.random() * multiplier;
-var remaining = projected - actual;
-
-//variable is saved in String - we need to convert it to JSON object
-incomeObj = JSON.parse(incomeBudget);
-
-//modify existing keys and limit to 2 decimal places
-incomeObj.projected = parseFloat(projected).toFixed(2);
-incomeObj.actual = parseFloat(actual).toFixed(2);
-incomeObj.remaining = parseFloat(remaining).toFixed(2);
-
-
-//now we need to convert object back to String to save it in variable
-vars.put(&quot;updatedIncomeBudget&quot;, JSON.stringify(incomeObj) );
-
-//additionally extract budget ID into separate variable
-vars.put( &quot;incomeBudgetId&quot;,JSON.stringify(incomeObj.id) );
-
-vars.put(&quot;incomeBudget_id&quot;,incomeBudgetId);</stringProp>
-                    <stringProp name="scriptLanguage">javascript</stringProp>
-                  </JSR223PreProcessor>
-                  <hashTree/>
                 </hashTree>
               </hashTree>
             </hashTree>
+            <IncludeController guiclass="IncludeControllerGui" testclass="IncludeController" testname="Update Expenditure" enabled="true">
+              <stringProp name="IncludeController.includepath">./update_expenditure.jmx</stringProp>
+            </IncludeController>
+            <hashTree/>
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Open Manage Category" enabled="true"/>
           <hashTree>
