@@ -720,6 +720,19 @@
               </UniformRandomTimer>
               <hashTree/>
             </hashTree>
+            <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Update Income if income budgets extracted" enabled="true">
+              <stringProp name="TestPlan.comments">${__groovy(!&quot;${incomeBudget}&quot;.equals(&quot;NO_INCOME_BUDGET_EXTRACTED&quot;))}</stringProp>
+              <stringProp name="IfController.condition">${__javaScript(vars.get(&quot;incomeBudget&quot;) != &quot;NO_INCOME_BUDGET_EXTRACTED&quot;)}</stringProp>
+              <boolProp name="IfController.evaluateAll">false</boolProp>
+            </IfController>
+            <hashTree>
+              <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug - income extracted" enabled="true">
+                <boolProp name="displayJMeterProperties">false</boolProp>
+                <boolProp name="displayJMeterVariables">true</boolProp>
+                <boolProp name="displaySystemProperties">false</boolProp>
+              </DebugSampler>
+              <hashTree/>
+            </hashTree>
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Open Manage Category" enabled="true"/>
           <hashTree>
