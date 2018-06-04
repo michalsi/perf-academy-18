@@ -726,6 +726,33 @@
               <boolProp name="IfController.evaluateAll">false</boolProp>
             </IfController>
             <hashTree>
+              <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Update Income" enabled="true">
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="script">var incomeBudget = vars.get(&quot;incomeBudget&quot;);
+
+var multiplier = 10000;
+
+var projected = Math.random() * multiplier ;
+var actual = Math.random() * multiplier;
+var remaining = projected - actual;
+
+//variable is saved in String - we need to convert it to JSON object
+incomeObj = JSON.parse(incomeBudget);
+
+//modify existing keys and limit to 2 decimal places
+incomeObj.projected = parseFloat(projected).toFixed(2);
+incomeObj.actual = parseFloat(actual).toFixed(2);
+incomeObj.remaining = parseFloat(remaining).toFixed(2);
+
+
+//now we need to convert object back to String to save it in variable
+vars.put(&quot;updatedIncomeBudget&quot;, JSON.stringify(incomeObj) );
+</stringProp>
+                <stringProp name="scriptLanguage">javascript</stringProp>
+              </JSR223Sampler>
+              <hashTree/>
               <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug - income extracted" enabled="true">
                 <boolProp name="displayJMeterProperties">false</boolProp>
                 <boolProp name="displayJMeterVariables">true</boolProp>
